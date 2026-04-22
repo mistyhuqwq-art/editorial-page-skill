@@ -282,7 +282,72 @@ hero padding:    120px 0 80px  /* 首屏更大留白 */
 
 ---
 
-## 8. Responsive Behavior（响应式）
+## 8. Accessibility & Print（可访问性与打印）
+
+这个风格天然适合长阅读和纸面输出，a11y 和打印都必须默认到位,不能事后补。
+
+### 必备的 `<head>` 字段
+
+每一份产出的 HTML 都必须填齐这四个字段,AI 不许占位符遗留:
+
+```html
+<meta name="description" content="一句话概括本页">
+<meta name="color-scheme" content="light only">    <!-- 本风格明确不做暗色模式 -->
+<meta property="og:title" content="...">
+<meta property="og:description" content="...">
+```
+
+**为什么 `color-scheme: light only`**:杂志风的温暖氛围依赖米色底色,如果浏览器自动反色(Safari 的 Reader Mode、系统深色模式污染),整个温度感会崩坏。明确声明只做亮色。
+
+### 键盘聚焦(`:focus-visible`)
+
+CTA 按钮、所有 `<a>` 都必须有可见聚焦样式。用 accent 色做 2px outline + 3px 外偏移:
+
+```css
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+```
+
+**为什么 `:focus-visible` 而不是 `:focus`**:避免鼠标点击后还残留聚焦框,只在键盘导航时显示。
+
+### 动效偏好(`prefers-reduced-motion`)
+
+本风格本来就几乎没动效,但唯一的 CTA hover transition 也要对有前庭障碍的用户关闭:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+```
+
+### 打印样式(`@media print`)
+
+**杂志风的核心优势之一就是纸面输出**。这个风格的项目名片、周报、简历、方案文档,大概率会被打印或另存为 PDF。print 样式不是可选项:
+
+必须处理的 5 件事:
+1. **保留背景色**:`-webkit-print-color-adjust: exact` + `print-color-adjust: exact`,否则 `#f5f0e8` 被浏览器丢弃变纯白
+2. **展开超链接**:`a[href^="http"]::after { content: " (" attr(href) ")" }`,让纸面读者看得到 URL
+3. **防止分页切断**:`.card`、`.insight`、`.flow-steps`、`.stats-row` 加 `page-break-inside: avoid`
+4. **标题不孤立**:`h1/h2/h3` 加 `page-break-after: avoid`,避免末尾只剩一个标题跟着空白
+5. **页边距用物理单位**:`@page { margin: 16mm 14mm; }`
+
+### a11y 最小检查清单
+
+- [ ] 所有图片(如有)有 `alt` 属性
+- [ ] 所有 `<a>` 有可见聚焦样式
+- [ ] 色彩对比:正文 `#1a1a1a` on `#f5f0e8` ≈ 14:1 ✓,辅助 `#6b6560` on `#f5f0e8` ≈ 4.8:1 ✓
+- [ ] 不靠纯颜色传递信息(.highlight 列除了颜色还有字重区分)
+- [ ] 无自动播放动画
+
+---
+
+## 9. Responsive Behavior（响应式）
 
 ### 断点：仅用一个 `@media (max-width: 768px)`
 
@@ -307,7 +372,7 @@ hero padding:    120px 0 80px  /* 首屏更大留白 */
 
 ---
 
-## 9. Agent Prompt Guidelines（AI 生成指南）
+## 10. Agent Prompt Guidelines（AI 生成指南）
 
 当让 AI 基于本规范生成页面时，提供以下引导：
 
@@ -335,6 +400,10 @@ hero padding:    120px 0 80px  /* 首屏更大留白 */
 - [ ] 有 hero（开头）和 ending CTA（结尾）？
 - [ ] container 是 960px 不是 1280px？
 - [ ] 移动端媒体查询完整？
+- [ ] `<head>` 里的 meta description / og:title / og:description / color-scheme 都填了(非占位符)？
+- [ ] 有 `@media print` 打印样式(保留背景色 + 防分页切断 + 展开 URL)？
+- [ ] 有 `:focus-visible` 键盘聚焦样式？
+- [ ] 有 `prefers-reduced-motion` 支持？
 
 ### 风格复刻的 One-shot 启动语
 

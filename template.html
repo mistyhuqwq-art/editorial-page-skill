@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{PAGE_DESCRIPTION}}">
+<meta name="color-scheme" content="light only">
+<meta property="og:title" content="{{PAGE_TITLE}}">
+<meta property="og:description" content="{{PAGE_DESCRIPTION}}">
 <title>{{PAGE_TITLE}}</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;0,8..60,900;1,8..60,400&display=swap');
@@ -415,6 +419,60 @@
     .hero-meta { flex-wrap: wrap; gap: 32px; }
     .compare-table { font-size: 13px; }
     .card-grid[style*="1fr 1fr"] { grid-template-columns: 1fr !important; }
+  }
+
+  /* ---- Keyboard Focus (a11y) ---- */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .ending-url:focus-visible {
+    outline-offset: 4px;
+  }
+
+  /* ---- Reduced Motion (a11y) ---- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ---- Print (杂志风天然适合打印/另存 PDF) ---- */
+  @media print {
+    @page { margin: 16mm 14mm; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .container { max-width: none; padding: 0; }
+    .hero { min-height: auto; padding: 0 0 24pt; page-break-after: avoid; }
+    .ending { min-height: auto; padding: 24pt 0; }
+    section { padding: 24pt 0; page-break-inside: avoid; }
+    .card, .insight, .roles-row, .flow-steps, .stats-row {
+      page-break-inside: avoid;
+    }
+    h1, h2, h3, h4 { page-break-after: avoid; }
+    /* 展开链接 URL 便于纸面识别 */
+    a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.85em;
+      color: var(--text-light);
+      word-break: break-all;
+    }
+    /* 隐藏无意义的交互元素 */
+    .ending-url {
+      border: 1px solid var(--accent);
+      padding: 6pt 12pt;
+      page-break-inside: avoid;
+    }
+    .ending-url::after { content: ""; } /* CTA 按钮内容已是 URL,不重复展开 */
   }
 </style>
 </head>
