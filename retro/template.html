@@ -469,15 +469,74 @@
     to { opacity: 1; transform: scale(1); }
   }
 
+  /* ---- 默认自发动效(retro-rich 的"小活物"感)---- */
+
+  /* Pixel star:每颗错开节奏,整体像 ≈ 呼吸的心跳 */
+  body.fx-rich .pixel-star {
+    animation: fx-retro-star 1.8s ease-in-out infinite;
+  }
+
+  /* Sticker 默认轻微左右漂动(chunky 感的"摇晃姿势") */
+  body.fx-rich .sticker {
+    animation: fx-retro-float 3.2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes fx-retro-float {
+    0%, 100% { transform: rotate(-4deg) translateY(0); }
+    50% { transform: rotate(-3deg) translateY(-2px); }
+  }
+  /* hover 时停止默认漂 + 用更夸张 wiggle */
+  body.fx-rich .sticker:hover {
+    animation: fx-retro-wiggle 0.5s ease-in-out;
+  }
+
+  /* 糖果卡片默认轮流微呼吸(错开 0.4s),整组像活的 */
+  body.fx-rich .rcard {
+    animation: fx-retro-breathe 3.6s ease-in-out infinite;
+  }
+  body.fx-rich .rcard:nth-child(1) { animation-delay: 0s; }
+  body.fx-rich .rcard:nth-child(2) { animation-delay: 0.4s; }
+  body.fx-rich .rcard:nth-child(3) { animation-delay: 0.8s; }
+  body.fx-rich .rcard:nth-child(4) { animation-delay: 1.2s; }
+  body.fx-rich .rcard:nth-child(5) { animation-delay: 1.6s; }
+  body.fx-rich .rcard:nth-child(6) { animation-delay: 2.0s; }
+  @keyframes fx-retro-breathe {
+    0%, 100% { box-shadow: 5px 5px 0 var(--line); }
+    50% { box-shadow: 5px 7px 0 var(--line); }
+  }
+  /* hover 时打断呼吸,进入强推模式 */
+  body.fx-rich .rcard:hover {
+    animation: none;
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 var(--line);
+    filter: saturate(1.15);
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  }
+
+  /* h2 accent italic 关键词轻微左右摇(只中文不漂,用 :not(.k-cn)) */
+  body.fx-rich h2 .k {
+    display: inline-block;
+    animation: fx-retro-kwiggle 4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes fx-retro-kwiggle {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(1.2deg); }
+  }
+
+  /* Pill dot 呼吸保留(节奏和原来一致) */
+
   /* reduced motion 下关闭所有动效 */
   @media (prefers-reduced-motion: reduce) {
     body.fx-rich .pixel-star,
     body.fx-rich .pill .dot,
-    body.fx-rich h1 {
+    body.fx-rich h1,
+    body.fx-rich .sticker,
+    body.fx-rich .rcard,
+    body.fx-rich h2 .k {
       animation: none;
     }
     body.fx-rich .pill .dot { box-shadow: none; }
-    body.fx-rich .sticker,
     body.fx-rich .rcard,
     body.fx-rich .btn-primary { transition: none; }
     body.fx-rich .sticker:hover { animation: none; }
