@@ -80,8 +80,9 @@ cp warm-editorial/template.html my-page.html
 | 风格 | 气质 | 场景 |
 |---|---|---|
 | [warm-editorial](./warm-editorial/) | 米色底 + 砖红 + 衬线 + 克制 | 项目名片、产品 landing、周报、简历、博客长文、分享封面 |
+| [tech-dark](./tech-dark/) | 暖中性黑 + Lime + italic serif 字族反差 + hairline 列表式 | 开发者工具、API 平台、CLI 产品、技术文档、基础设施 |
 
-*更多风格(Minimal Mono / Tech Dark / Swiss Grid / Brutalist / Retro)正在筹备中。*
+*更多风格(Minimal Mono / Swiss Grid / Brutalist / Retro)正在筹备中。*
 
 ---
 
