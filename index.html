@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="6 种视觉风味的单页 HTML 设计合集。浏览器里对比看效果,按场景选风味。warm/dark/mono/retro/swiss/brutalist。">
+<meta name="description" content="6 种视觉风味 × 表现力档位的单页 HTML 设计合集。浏览器里对比看效果,按场景选风味。warm/dark/mono/retro/swiss/brutalist。">
 <meta name="color-scheme" content="light only">
 <meta property="og:title" content="Editorial Page Skill · 6 种风味合集">
-<meta property="og:description" content="6 种视觉风味的单页 HTML 设计合集。浏览器里对比看效果,按场景选风味。">
+<meta property="og:description" content="6 种视觉风味 × 表现力档位的单页 HTML 设计合集。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mistyhuqwq-art.github.io/editorial-page-skill/">
 <meta property="og:image" content="https://mistyhuqwq-art.github.io/editorial-page-skill/og-image.png">
@@ -112,6 +112,23 @@
     justify-content: center;
     padding: 24px;
     text-align: center;
+  }
+
+  /* FX-RICH 卡片右上角小徽章 */
+  .card .thumb .fx-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    z-index: 10;
+    pointer-events: none;
   }
 
   .card .body { padding: 20px 22px 22px; }
@@ -458,8 +475,8 @@
   <h1>Pick a <i>flavor</i>,<br>see it first.</h1>
   <p class="sub">选择风味之前,先在浏览器里看一眼真实效果。点击任意一张卡片打开完整 example 页,看完再回到 Claude Code 告诉它你要哪个。</p>
 
-  <div class="tag">FLAVORS · 7 options</div>
-  <h2>七种可选</h2>
+  <div class="tag">FLAVORS · 10 options (6 base + 4 fx-rich)</div>
+  <h2>十种可选 · 六风味 × 表现力档位</h2>
 
   <div class="grid">
 
@@ -569,6 +586,60 @@
       </div>
     </a>
 
+    <!-- Warm Editorial FX-RICH -->
+    <a class="card" href="./warm-editorial/example-rich.html">
+      <div class="thumb thumb-warm">
+        <span class="fx-badge">▶ fx-rich</span>
+        <div>
+          <div class="t-bar"></div>
+          <div class="t-h">温暖而<i>克制</i>。</div>
+          <div class="t-sub">衬线 · 砖红 · 含进入动效</div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="name">WARM-EDITORIAL · FX-RICH</div>
+        <h3>编辑杂志风 · 含进入动效</h3>
+        <p>同样的 warm 气质,加小红条渐长、hero 渐入、accent 下划线入场、卡片 hover 微推。基因不变,多一层"进入感"。</p>
+        <div class="meta"><b>适合</b> · 名片/简历/封面中,希望首屏更有仪式感的版本</div>
+      </div>
+    </a>
+
+    <!-- Retro FX-RICH -->
+    <a class="card" href="./retro/example-rich.html">
+      <div class="thumb thumb-retro">
+        <span class="fx-badge">▶ fx-rich</span>
+        <div class="t-stars">◆ ◆ ◆</div>
+        <div class="t-h">Toast Studio<br><span class="box">三岁</span>了,<br><span class="ital">一起来玩</span>。</div>
+      </div>
+      <div class="body">
+        <div class="name">RETRO · FX-RICH</div>
+        <h3>糖果风 · 有小活物</h3>
+        <p>星星闪烁、pill dot 呼吸、sticker 悬停 wiggle、卡片推动强化、h1 chunky 弹入。retro 本就玩心,rich 版把它活起来。</p>
+        <div class="meta"><b>适合</b> · 活动邀请/作品集 Hero 区希望更吸引眼球的时候</div>
+      </div>
+    </a>
+
+    <!-- Brutalist FX-RICH -->
+    <a class="card" href="./brutalist/example-rich.html">
+      <div class="thumb thumb-brutal">
+        <span class="fx-badge">▶ fx-rich</span>
+        <span class="t-stamp">▲ MANIFESTO · 2026</span>
+        <div class="t-h">UGLY DECKS<br><i>SHIP</i>.<br>PRETTY ONES<br><i>SIT</i>.</div>
+      </div>
+      <div class="body">
+        <div class="name">BRUTALIST · FX-RICH</div>
+        <h3>粗野派 · 刚猛动感</h3>
+        <p>Stamp 入场 wiggle、h1 弹入、screamer 从下方冲上来、反色块 hover 翻转、按钮 step 位移。大声再加上动,更像宣言。</p>
+        <div class="meta"><b>适合</b> · 宣言/海报/landing 希望首屏就"炸一下"的场合</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- 补充说明:哪些风味没有 fx-rich -->
+  <div style="background: var(--bg-card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 22px; margin-bottom: 28px; font-size: 13px; color: var(--text-sub); line-height: 1.7;">
+    <b style="color: var(--text); font-weight: 600;">为什么 minimal-mono 和 swiss-grid 没有 fx-rich?</b><br>
+    这两个风味的核心身份<b>就是极端性</b> —— minimal-mono 的"纯黑白极简"、swiss-grid 的"秩序至上",加任何装饰或动效都会背叛风味基因。所以它们保持单一形态,不做 rich 版本。
   </div>
 
   <!-- Guide -->

@@ -378,6 +378,84 @@
     .btn:hover { background: inherit !important; }
     a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; color: #666; }
   }
+
+  /* ==========================================================
+     表现力开关 · body.fx-rich (brutalist 的进入感)
+     ==========================================================
+     Brutalist 本来就"大声",fx-rich 加的是"chunky 的动感"——
+     stamp 摇晃、screamer 弹入、block hover 翻转、按钮位移
+     都用刚猛的方式(无缓动曲线,或直接 step 过渡)。
+     ========================================================== */
+
+  /* Stamp 入场时 wiggle */
+  body.fx-rich .stamp {
+    animation: fx-brut-stamp 0.8s ease-out 0.2s backwards;
+  }
+  @keyframes fx-brut-stamp {
+    0% { opacity: 0; transform: rotate(-20deg) scale(1.3); }
+    60% { transform: rotate(0deg) scale(1.02); }
+    100% { opacity: 1; transform: rotate(-3deg) scale(1); }
+  }
+
+  /* h1 弹入 */
+  body.fx-rich h1 {
+    animation: fx-brut-crash 0.6s cubic-bezier(0.2, 0.9, 0.3, 1) 0.1s backwards;
+  }
+  @keyframes fx-brut-crash {
+    from { opacity: 0; transform: scale(0.88); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Screamer 从下方弹入(巨大字号配上弹跳入场 = 声量的视觉化) */
+  body.fx-rich .screamer-text {
+    animation: fx-brut-shout 0.7s cubic-bezier(0.2, 1, 0.3, 1) backwards;
+  }
+  @keyframes fx-brut-shout {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* 反色块 hover 时翻转颜色 (chunky 感) */
+  body.fx-rich .block {
+    transition: background 0.15s step-end, color 0.15s step-end;
+  }
+  body.fx-rich .block.b1:hover, body.fx-rich .block.b3:hover {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+  }
+  body.fx-rich .block.b2:hover {
+    background: var(--text) !important;
+    color: var(--bg) !important;
+  }
+
+  /* 按钮 hover 刚猛位移 (不是柔和的 translate,是 step) */
+  body.fx-rich .btn {
+    transition: transform 0.1s steps(2), background 0.1s step-end, color 0.1s step-end;
+  }
+  body.fx-rich .btn:hover {
+    transform: translate(-2px, -2px);
+  }
+
+  /* Handwritten 签名入场(从 -5deg 旋到 -1.2deg) */
+  body.fx-rich .handwritten {
+    animation: fx-brut-signoff 0.9s ease-out 0.8s backwards;
+  }
+  @keyframes fx-brut-signoff {
+    from { opacity: 0; transform: rotate(-5deg); }
+    to { opacity: 1; transform: rotate(-1.2deg); }
+  }
+
+  /* reduced motion 下关闭所有 */
+  @media (prefers-reduced-motion: reduce) {
+    body.fx-rich .stamp,
+    body.fx-rich h1,
+    body.fx-rich .screamer-text,
+    body.fx-rich .handwritten {
+      animation: none;
+    }
+    body.fx-rich .block,
+    body.fx-rich .btn { transition: none; }
+  }
 </style>
 </head>
 <body>

@@ -474,6 +474,96 @@
     }
     .ending-url::after { content: ""; } /* CTA 按钮内容已是 URL,不重复展开 */
   }
+
+  /* ==========================================================
+     表现力开关 · body.fx-rich (warm-editorial 的进入感)
+     ==========================================================
+     核心:不加任何外来色/阴影/发光 —— 只用 warm 本来就有的语言
+     (小红条、accent 色、砖红色系)做"进入感"。保持克制基因。
+     ========================================================== */
+
+  /* 小红条从 0 宽度渐长到 40px */
+  body.fx-rich .hero-bar {
+    animation: fx-warm-bar 0.8s ease-out 0.1s backwards;
+  }
+  @keyframes fx-warm-bar {
+    from { width: 0; }
+    to { width: 40px; }
+  }
+
+  /* Hero h1 渐入 + 极轻微上移 */
+  body.fx-rich h1 {
+    animation: fx-warm-rise 0.7s ease-out 0.25s backwards;
+  }
+  body.fx-rich .hero-sub {
+    animation: fx-warm-rise 0.7s ease-out 0.45s backwards;
+  }
+  body.fx-rich .hero-meta {
+    animation: fx-warm-rise 0.7s ease-out 0.6s backwards;
+  }
+  @keyframes fx-warm-rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 章节小标签微发光(不靠阴影,靠 accent-light 底色) */
+  body.fx-rich .section-tag::before {
+    content: '— ';
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* accent 关键词 hover 时底部画出 1px 下划线 */
+  body.fx-rich h2 .accent {
+    position: relative;
+    transition: color 0.2s;
+  }
+  body.fx-rich h2 .accent::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  body.fx-rich h2:hover .accent::after {
+    transform: scaleX(1);
+  }
+
+  /* 卡片 hover 时边框颜色加深,极轻微上推(1px) */
+  body.fx-rich .card {
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  body.fx-rich .card:hover {
+    border-color: rgba(0,0,0,0.16);
+    transform: translateY(-1px);
+  }
+
+  /* CTA 按钮 hover 时边框扩散(边框宽度从 2 到 3) */
+  body.fx-rich .ending-url {
+    transition: all 0.2s;
+  }
+  body.fx-rich .ending-url:hover {
+    background: var(--accent);
+    color: #fff;
+    border-width: 3px;
+    padding: 15px 39px; /* 抵消 border 增加导致的布局跳动 */
+  }
+
+  /* reduced motion 下一律关闭动效 */
+  @media (prefers-reduced-motion: reduce) {
+    body.fx-rich .hero-bar,
+    body.fx-rich h1,
+    body.fx-rich .hero-sub,
+    body.fx-rich .hero-meta {
+      animation: none;
+    }
+    body.fx-rich h2 .accent::after,
+    body.fx-rich .card,
+    body.fx-rich .ending-url { transition: none; }
+  }
 </style>
 </head>
 <body>
