@@ -1,101 +1,103 @@
-# Editorial Warm Design
+# Editorial Page Skill · Design System Collection
 
-> An AI-readable design system for warm, editorial-style single-page HTML.
-> 一份 AI 可读的设计系统规范，生成编辑杂志风格的单页网页。
-
-<img width="800" alt="Editorial Warm Design preview" src="./example-project-card.html">
-
-## ✨ What is this?
-
-A **design system spec** (`DESIGN.md`) + **HTML template** (`template.html`) you can feed to any AI coding assistant — **Claude Code, Cursor, v0, Lovable, Copilot** — to generate visually consistent pages in the "editorial warm" style.
-
-**Style characteristics:**
-- 🎨 Warm cream background (`#f5f0e8`) + terracotta accent (`#c0542e`)
-- 📖 Serif headlines + sans-serif body (Source Serif 4 / Noto Serif SC + Noto Sans SC)
-- 🎯 Radical restraint — no gradients, no shadows, no icons
-- 📐 Narrow 960px container, magazine-style section rhythm
-- 🧱 10 composable blocks: hero / def-list / cards / compare-table / stats / roles / flow / stack / code / CTA
-
-**Great for:** project cards · product landing pages · technical proposals · blog articles · résumés · pitch one-pagers · presentation web versions · team digests.
+> AI 可读的设计系统合集 —— 一层通用排版原则 + 多种视觉风味。
+> 给任何 AI 工具(Claude Code / Cursor / v0 / Copilot / Lovable)生成视觉一致的单页 HTML。
 
 ---
 
-## 🚀 Three Ways to Use
-
-### Option A: One-shot with any AI
+## 两层架构
 
 ```
-Build a single-page HTML following this DESIGN.md:
-
-[paste DESIGN.md contents]
-
-Topic: [your topic]
-Audience: [your audience]
-Key messages: [3-7 points]
-CTA: [what should readers do at the end]
-Use at least 4 different section types from the 10 components.
+PRINCIPLES.md           ← 通用排版原则(6 条,所有风格都要遵守)
+│
+├── warm-editorial/     ← 风味 1: 暖色编辑杂志风 (米色 + 砖红 + 衬线)
+│   ├── DESIGN.md
+│   ├── template.html
+│   └── example.html
+│
+└── [更多风格陆续加入]
 ```
 
-### Option B: Fork the template
+### 为什么分两层
+
+AI 生成的页面之所以"有 AI 味儿",**真正原因不在视觉层,在排版语法层** —— 结构可预测、信息密度均一、没有作者痕迹。
+
+`PRINCIPLES.md` 抽出了这 6 条**跨风格通用的底层原则**。
+每种风格的 `DESIGN.md` 只讲该风格自己的**视觉选择**(颜色、字体、装饰偏好)。
+
+**风味可以变化,原则不能。** 一个用青紫渐变的页面可以气质高级(如果排版节制),一个用米色衬线的页面也可以 AI 味儿满满(如果结构模板化)。
+
+---
+
+## 怎么用
+
+### Claude Code 用户
 
 ```bash
-cp template.html my-page.html
-# then edit the {{PLACEHOLDER}} slots
+# 解压 skill 包到 ~/.claude/skills/
+tar -xzf editorial-page-skill.tar.gz -C ~/.claude/skills/
+
+# 然后在 Claude Code 里自然语言触发:
+"帮我做个项目介绍页"
+"生成一份本周周报"
+"做一页个人简历"
 ```
 
-All CSS is inline — single file, no build tools, no dependencies beyond Google Fonts.
+Skill 会自动加载 PRINCIPLES.md + 对应风格的 DESIGN.md。
 
-### Option C: Install as Claude Code Skill
+### 任何 AI 工具
 
-If you use [Claude Code](https://claude.com/claude-code):
+把下面两份 Markdown 一起贴给 Cursor / v0 / Copilot / ChatGPT:
+
+1. `PRINCIPLES.md` —— 通用排版原则
+2. 你选的风格文件,如 `warm-editorial/DESIGN.md`
+
+然后说:
+```
+Build a single-page HTML following the two Markdown specs above.
+
+Topic: [主题]
+Audience: [受众]
+Key messages: [3-7 点]
+CTA: [结尾希望读者做什么]
+
+Apply PRINCIPLES.md's 6 rules (structural variety, density jump, spacing
+rhythm, accent restraint, author signature, break uniformity) first.
+Then apply the style's visual choices.
+```
+
+### Fork template
 
 ```bash
-# Download skill bundle (coming soon to this repo's Releases)
-curl -L https://github.com/YOUR_NAME/editorial-warm-design/releases/latest/download/editorial-page-skill.tar.gz | tar -xz -C ~/.claude/skills/
-
-# Then in Claude Code, just ask:
-# "Make me an editorial-style project card for X"
+cp warm-editorial/template.html my-page.html
+# 替换 {{PLACEHOLDER}} 占位符,所有 CSS inline,双击即可预览
 ```
 
 ---
 
-## 📦 What's in this repo
+## 当前风格
 
-| File | Purpose |
-|------|---------|
-| `DESIGN.md` | The design system spec — **the main deliverable**. Feed this to any AI. |
-| `template.html` | A blank HTML template with `{{PLACEHOLDER}}` slots for all 10 block types. |
-| `example-project-card.html` | A real-world example: the project card this style was born from. |
+| 风格 | 气质 | 场景 |
+|---|---|---|
+| [warm-editorial](./warm-editorial/) | 米色底 + 砖红 + 衬线 + 克制 | 项目名片、产品 landing、周报、简历、博客长文、分享封面 |
 
----
-
-## 🎨 Design Philosophy
-
-Inspired by print editorial design. The goal is to make tech/product content feel **calm, credible, and readable** — the opposite of dashboard-style UIs saturated with gradients and icons.
-
-Three anchors hold the style together:
-1. **Color restraint** — 70% cream + 25% greyscale + 5% terracotta. No other hues.
-2. **Typography hierarchy** — serif 900 for H1 vs sans 400 for body. Strong contrast builds magazine rhythm.
-3. **Structural variety** — every page must mix at least 4 different block types. No uniform card grids.
-
-See [DESIGN.md §7 Design Taboos](./DESIGN.md#7-design-taboos设计禁忌必读) for the negative rules — the things you must NOT do.
+*更多风格(Minimal Mono / Tech Dark / Swiss Grid / Brutalist / Retro)正在筹备中。*
 
 ---
 
-## 🔗 Inspired by
+## 灵感来源
 
-- [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) — the pattern of AI-readable design specs
-- [designmd.me](https://designmd.me/) — the tool that popularized DESIGN.md as a format
+- [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) —— AI 可读设计规范的生态
+- [designmd.me](https://designmd.me/) —— 推广 DESIGN.md 作为格式的工具
 
-This repo contributes a specific style (warm editorial) to that ecosystem.
+本 repo 的贡献是:**把"通用原则层" (PRINCIPLES.md) 和"风味层" (DESIGN.md) 分开**,让规范可以在不同风格间复用,也让每个具体风格的规范更精简。
 
 ---
 
-## 📝 License
+## License
 
-MIT — use freely, modify freely, attribute if you want.
+MIT — 自由使用、修改、分发。
 
-## 🙋 Credits
+## Credits
 
-Born from the [Teamspace](https://github.com/) project card, Apr 2026.
-Extracted and systematized by X and Claude.
+由 X 和小克(Claude)共同提炼。风格最初诞生于 Teamspace 项目名片页(2026-04)。
