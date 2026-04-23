@@ -300,6 +300,48 @@
     padding: 0 0.1em;
   }
 
+  /* Brutalist 预览缩略图 */
+  .thumb-brutal {
+    background: #ffe500;
+    color: #000;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: column;
+    padding: 18px 22px;
+    gap: 10px;
+  }
+  .thumb-brutal .t-stamp {
+    display: inline-block;
+    background: #000;
+    color: #ffe500;
+    padding: 3px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transform: rotate(-3deg);
+  }
+  .thumb-brutal .t-h {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #000;
+  }
+  .thumb-brutal .t-h i {
+    background: #000;
+    color: #ffe500;
+    padding: 0 0.15em;
+    font-style: normal;
+    display: inline-block;
+    transform: skewX(-4deg);
+  }
+
   /* Swiss Grid 预览缩略图 */
   .thumb-swiss {
     background: #fff;
@@ -406,8 +448,8 @@
   <h1>Pick a <i>flavor</i>,<br>see it first.</h1>
   <p class="sub">选择风味之前,先在浏览器里看一眼真实效果。点击任意一张卡片打开完整 example 页,看完再回到 Claude Code 告诉它你要哪个。</p>
 
-  <div class="tag">FLAVORS · 6 options</div>
-  <h2>六种可选</h2>
+  <div class="tag">FLAVORS · 7 options</div>
+  <h2>七种可选</h2>
 
   <div class="grid">
 
@@ -503,6 +545,20 @@
       </div>
     </a>
 
+    <!-- Brutalist -->
+    <a class="card" href="./brutalist/example.html">
+      <div class="thumb thumb-brutal">
+        <span class="t-stamp">▲ MANIFESTO · 2026</span>
+        <div class="t-h">UGLY DECKS<br><i>SHIP</i>.<br>PRETTY ONES<br><i>SIT</i>.</div>
+      </div>
+      <div class="body">
+        <div class="name">BRUTALIST</div>
+        <h3>粗野派 · 鲜黄纯黑大声量</h3>
+        <p>Archivo Black 超粗 + 黑黄反色块 + 歪斜印章 + screamer 超级声量段。拒绝客套,有观点的排版。</p>
+        <div class="meta"><b>适合</b> · 活动海报 / 观点宣言 / 创始人声明 / 竞选倡议 / 音乐节 landing</div>
+      </div>
+    </a>
+
   </div>
 
   <!-- Guide -->
@@ -514,6 +570,7 @@
     <p><b>技术博客 / 开源 README / 工程师个人站</b> → <code>minimal-mono</code>(纯黑白文本)</p>
     <p><b>活动邀请 / 作品集 / 独立游戏站 / 有玩心的产品</b> → <code>retro</code>(糖果 chunky)</p>
     <p><b>出版/期刊 / 设计品牌 / 文化机构 / 严肃年报 / 排版研究</b> → <code>swiss-grid</code>(红黑 12 栏)</p>
+    <p><b>活动海报 / 观点宣言 / 声明 / 竞选倡议 / 需要立刻被记住</b> → <code>brutalist</code>(黄黑大声量)</p>
     <p style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--text-dim);">如果你的场景跨多个分类,选"最想让访客第一眼被感染到的情绪"对应的风味。</p>
   </div>
 

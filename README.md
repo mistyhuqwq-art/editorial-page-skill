@@ -84,8 +84,7 @@ cp warm-editorial/template.html my-page.html
 | [minimal-mono](./minimal-mono/) | 纯黑白 + Inter + 等宽元信息 + 虚线分隔 + 粗细断崖(300 vs 900) | 技术博客、开源 README 展示、工程师个人站、论文式长文 |
 | [retro](./retro/) | 奶油底 + 糖果三色(奶粉/天空蓝/奶油黄) + chunky 边框硬阴影 + CRT 细扫描 + 现代骨架 | 活动邀请、创作者作品集、独立游戏站、有玩心的产品 |
 | [swiss-grid](./swiss-grid/) | 红黑二色 + Inter 900 uppercase + 12 栏精确对齐 + 1.25 modular scale | 出版/期刊、设计品牌、文化机构、严肃年报、排版研究 |
-
-*Brutalist 可能根据使用反馈后续加入。*
+| [brutalist](./brutalist/) | 鲜黄底 + 纯黑 + Archivo Black 超粗 + 歪斜印章 + 黑黄反色块 + screamer 超大声量段 | 活动海报、观点宣言、创始人声明、竞选倡议、反叛品牌、音乐节 landing |
 
 **在浏览器中对比选风味**:打开 [`preview-index.html`](./preview-index.html),5 个风味缩略图 + 对号入座的选择指南。
 
