@@ -9,7 +9,7 @@
 <meta property="og:description" content="{{PAGE_DESCRIPTION}}">
 <title>{{PAGE_TITLE}}</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:ital,wght@0,400;0,500;1,400&display=swap');
 
   :root {
     /* Background & text */
@@ -25,9 +25,9 @@
     --accent:     #9eff00;
     --accent-dim: rgba(158,255,0,0.12);
 
-    /* Fonts */
-    --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --serif: 'Source Serif 4', Georgia, serif;
+    /* Fonts — 中英混排策略:英文字体在前,中文字体 fallback */
+    --sans:  'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
     --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
   }
 
@@ -346,61 +346,108 @@
   }
 
   /* ==========================================================
-     OPTIONAL: Tech Glow (默认关闭)
+     表现力开关 · body.fx-rich
      ==========================================================
-     以下是 Tech Dark 的"可选加强"效果。默认注释掉。
-     当你需要更强的视觉张力(品牌页 / 发布页 / 活动页)时,
-     取消以下任意代码块的注释。常规内容页(文档/博客/README) 请保持关闭。
-     ==========================================================
+     默认关闭(克制版:纯色 Lime,无光效)。
+     在 <body> 加 class="fx-rich" 即开启丰富表现力:
+       - hero 背景柔和 radial 光
+       - italic 关键词荧光扩散
+       - CTA 按钮微渐变 + 发光边缘
+       - hairline 带 accent 起点
+       - 主 CTA 按钮悬浮微动
+       - 极细 CRT 扫描线
 
-     ---- A. Hero 背景柔和辐射光 ----
-     body {
-       background:
-         radial-gradient(ellipse 900px 600px at 15% 10%,
-           rgba(158,255,0,0.06), transparent 60%),
-         radial-gradient(ellipse 700px 500px at 90% 90%,
-           rgba(158,255,0,0.03), transparent 60%),
-         linear-gradient(180deg, #1c1b1a 0%, #151514 100%);
-     }
+     何时开 fx-rich:
+       ✓ 品牌主页 / 产品 landing / 发布公告 / 活动邀请
+       ✓ 需要强视觉张力、让访客停留的场景
+     何时保持关闭(默认):
+       ✗ 文档页 / 博客内容 / README 展示 / 变更日志
+       ✗ 读者主要目标是读文字的场景
+     ========================================================== */
 
-     ---- B. Accent 关键词荧光扩散 ----
-     h1 .k {
-       text-shadow:
-         0 0 18px rgba(158,255,0,0.35),
-         0 0 40px rgba(158,255,0,0.2);
-     }
-     h2 .k {
-       text-shadow: 0 0 12px rgba(158,255,0,0.28);
-     }
+  /* Hero 背景柔和辐射光 */
+  body.fx-rich {
+    background:
+      radial-gradient(ellipse 900px 600px at 15% 10%,
+        rgba(158,255,0,0.07), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 90%,
+        rgba(158,255,0,0.035), transparent 60%),
+      linear-gradient(180deg, #1c1b1a 0%, #151514 100%);
+    background-attachment: fixed;
+  }
 
-     ---- C. CTA 按钮微渐变 + 发光边缘 ----
-     .btn-primary {
-       background: linear-gradient(180deg, #b5ff2e 0%, #9eff00 100%);
-       box-shadow:
-         0 0 0 1px rgba(158,255,0,0.4),
-         0 6px 20px rgba(158,255,0,0.15);
-     }
+  /* 关键词荧光扩散 */
+  body.fx-rich h1 .k {
+    text-shadow:
+      0 0 18px rgba(158,255,0,0.4),
+      0 0 44px rgba(158,255,0,0.2);
+  }
+  body.fx-rich h2 .k {
+    text-shadow: 0 0 14px rgba(158,255,0,0.3);
+  }
 
-     ---- D. 极细 CRT 扫描线 (全页,2% 透明) ----
-     body::after {
-       content: '';
-       position: fixed; inset: 0;
-       pointer-events: none;
-       background-image: repeating-linear-gradient(
-         0deg, transparent 0, transparent 3px,
-         rgba(255,255,255,0.02) 3px, rgba(255,255,255,0.02) 4px
-       );
-       z-index: 999;
-     }
+  /* CTA 按钮微渐变 + 发光边缘 + 悬浮微动 */
+  body.fx-rich .btn-primary {
+    background: linear-gradient(180deg, #b5ff2e 0%, #9eff00 100%);
+    box-shadow:
+      0 0 0 1px rgba(158,255,0,0.45),
+      0 6px 24px rgba(158,255,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  body.fx-rich .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(158,255,0,0.5),
+      0 10px 32px rgba(158,255,0,0.25);
+  }
 
-     ---- E. Hairline 带 accent 起点 ----
-     .hairline {
-       background: linear-gradient(90deg,
-         rgba(158,255,0,0.25) 0%,
-         rgba(255,255,255,0.06) 30%,
-         rgba(255,255,255,0.06) 100%);
-     }
-  ========================================================== */
+  /* Hairline 带 accent 起点 */
+  body.fx-rich .hairline {
+    background: linear-gradient(90deg,
+      rgba(158,255,0,0.35) 0%,
+      rgba(158,255,0,0.12) 10%,
+      rgba(255,255,255,0.06) 40%,
+      rgba(255,255,255,0.06) 100%);
+  }
+
+  /* Chip 加柔和外发光 */
+  body.fx-rich .chip {
+    box-shadow: 0 0 14px rgba(158,255,0,0.12);
+  }
+
+  /* 版本号状态 dot 呼吸灯 (仅 .kicker 里的版本标识) */
+  body.fx-rich .kicker.pulse::after {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 12px;
+    box-shadow: 0 0 10px var(--accent);
+    animation: fx-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes fx-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* 极细 CRT 扫描线 (全页,2.5% 透明) */
+  body.fx-rich::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      0deg, transparent 0, transparent 3px,
+      rgba(255,255,255,0.025) 3px, rgba(255,255,255,0.025) 4px
+    );
+    z-index: 999;
+  }
+
+  /* 减少动效偏好下,连 fx-rich 的 pulse 也停 */
+  @media (prefers-reduced-motion: reduce) {
+    body.fx-rich .kicker.pulse::after { animation: none; }
+    body.fx-rich .btn-primary { transition: none; }
+  }
 </style>
 </head>
 <body>

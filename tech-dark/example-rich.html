@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="flux · 一个为"一次做对"而设计的命令行迁移工具。示例页,展示 Tech Dark 风味。">
+<meta name="description" content="flux · 命令行迁移工具。示例页,展示 Tech Dark fx-rich(丰富表现力版)。">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="flux · Database migrations you don't need to babysit">
-<meta property="og:description" content="为"一次做对"而设计的命令行迁移工具。示例页。">
-<title>flux · Tech Dark example</title>
+<meta property="og:description" content="命令行迁移工具。Tech Dark fx-rich 示例页。">
+<title>flux · Tech Dark example (fx-rich)</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Source+Serif+4:ital,wght@1,400&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:ital,wght@0,400;0,500;1,400&display=swap');
 
@@ -145,6 +145,85 @@
     *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
 
+  /* ==========================================================
+     fx-rich · 表现力开关(本 example 已启用)
+     ========================================================== */
+
+  /* Hero 背景柔和辐射光 */
+  body.fx-rich {
+    background:
+      radial-gradient(ellipse 900px 600px at 15% 10%,
+        rgba(158,255,0,0.07), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 90%,
+        rgba(158,255,0,0.035), transparent 60%),
+      linear-gradient(180deg, #1c1b1a 0%, #151514 100%);
+    background-attachment: fixed;
+  }
+
+  /* 关键词荧光扩散 */
+  body.fx-rich h1 .k {
+    text-shadow:
+      0 0 18px rgba(158,255,0,0.4),
+      0 0 44px rgba(158,255,0,0.2);
+  }
+  body.fx-rich h2 .k {
+    text-shadow: 0 0 14px rgba(158,255,0,0.3);
+  }
+
+  /* CTA 按钮微渐变 + 发光边缘 + 悬浮微动 */
+  body.fx-rich .btn-primary {
+    background: linear-gradient(180deg, #b5ff2e 0%, #9eff00 100%);
+    box-shadow:
+      0 0 0 1px rgba(158,255,0,0.45),
+      0 6px 24px rgba(158,255,0,0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  body.fx-rich .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1px rgba(158,255,0,0.5),
+      0 10px 32px rgba(158,255,0,0.25);
+  }
+
+  /* Chip 柔和外发光 */
+  body.fx-rich .chip {
+    box-shadow: 0 0 14px rgba(158,255,0,0.12);
+  }
+
+  /* 版本号呼吸灯 (仅 .kicker.pulse) */
+  body.fx-rich .kicker.pulse::after {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 12px;
+    box-shadow: 0 0 10px var(--accent);
+    animation: fx-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes fx-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* CRT 扫描线 */
+  body.fx-rich::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      0deg, transparent 0, transparent 3px,
+      rgba(255,255,255,0.025) 3px, rgba(255,255,255,0.025) 4px
+    );
+    z-index: 999;
+  }
+
+  /* Reduced motion 下关呼吸灯 */
+  @media (prefers-reduced-motion: reduce) {
+    body.fx-rich .kicker.pulse::after { animation: none; }
+    body.fx-rich .btn-primary { transition: none; }
+  }
+
   @media print {
     @page { margin: 16mm 14mm; }
     body { background: #fff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -166,13 +245,13 @@
   }
 </style>
 </head>
-<body>
+<body class="fx-rich">
 
 <div class="container">
 
   <!-- ====== Hero ====== -->
   <section class="hero">
-    <div class="kicker">FLUX v2.4.0 · BUILD 2026-04-23</div>
+    <div class="kicker pulse">FLUX v2.4.0 · BUILD 2026-04-23</div>
     <h1>
       Database migrations<br>
       you don't need to <span class="k">babysit</span>.

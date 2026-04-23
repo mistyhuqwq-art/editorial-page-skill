@@ -48,7 +48,7 @@
 
 ### Accent 可选色
 
-Tech Dark 的 accent 不锁死。根据受众气质可替换,但**一次只用一个**:
+Tech Dark 的 accent 不锁死,**一次只用一个主色**。常用选择:
 
 | Accent | Hex | 气质 | 适合 |
 |---|---|---|---|
@@ -56,8 +56,12 @@ Tech Dark 的 accent 不锁死。根据受众气质可替换,但**一次只用�
 | Mango | `#ff6b35` | 温暖、个人作品 | 工程师个人站、独立开发者产品 |
 | Rose | `#ff3860` | 直接、商业 | SaaS 首页、需要高转化的站 |
 | Citron | `#e5ff4c` | 怪诞、记忆点 | 独立创作者、个性工具 |
+| Cyan-Violet | `#00e6c8` → `#7c5cff` | 科技未来感 | AI 产品、基础设施 landing、发布页 |
+| Sky | `#3b82f6` | 稳重可信 | 企业级产品、API 平台 |
 
-> **不允许**:青色 `#00e6c8` / 紫色 `#7c5cff` / 科技蓝 `#3b82f6` / 青紫渐变。这些是"AI 创业公司模板"的视觉套路,会立刻让 Tech Dark 退回古早感。
+**渐变 accent 允许**(如 Cyan-Violet 的青紫渐变)—— 这不是 AI 味儿的元凶,PRINCIPLES.md 已经讲清:真正的 AI 味在排版层(结构可预测/密度均一/无作者痕迹),不在颜色。只要 PRINCIPLES 6 条把关了,颜色可以自由。
+
+**注意**:页面同时只用**一个** accent 色相(或一组同色系渐变)。不要在同一页混用 Lime + Cyan-Violet,会破坏焦点。
 
 ### 色彩使用比例
 
@@ -199,89 +203,73 @@ hairline 上下:    40-48px 留白
 
 ---
 
-## 6. 装饰约定
+## 6. 基础装饰
 
-### ✅ 使用(默认开)
+### 默认元素(所有 Tech Dark 页面都用)
 
 - **Hairline 分割线** `rgba(255,255,255,0.08)` 1px —— 替代卡片边框的主要分隔手段
 - **字族反差 accent** —— Source Serif italic 当关键词
 - **Mono 标签** —— 所有章节/元信息用 JetBrains Mono
 - **暖灰阶梯** —— 不用冷 slate/zinc
 
-### ⚙️ 可选(默认关,按需开启)
+### 几条最弱的约束(避免套路化,非装饰禁忌)
 
-这一组"科技呼吸"效果,**默认不用**。符合 PRINCIPLES 原则 4(强调节制)的精神——装饰必须有理由。但当页面需要更强视觉张力时,可开启:
+- **页面同时只用一个 accent 主色** —— 不混用 Lime + Rose + Cyan。焦点要集中
+- **避免"打卡式"模板流** —— 这由 PRINCIPLES 原则 1(结构多样性)把关
+- **不依赖纯颜色传达信息** —— a11y 基本要求
 
-```css
-/* ---- Optional: Tech Glow (默认注释掉) ---- */
-/* Hero 背景柔和辐射光 */
-/*
-body {
-  background:
-    radial-gradient(ellipse 900px 600px at 15% 10%,
-      rgba(158,255,0,0.06), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 90% 90%,
-      rgba(158,255,0,0.03), transparent 60%),
-    linear-gradient(180deg, #1c1b1a 0%, #151514 100%);
-}
-*/
-
-/* Accent 关键词荧光扩散 */
-/*
-h1 .k, h2 .k {
-  text-shadow:
-    0 0 18px rgba(158,255,0,0.35),
-    0 0 40px rgba(158,255,0,0.2);
-}
-*/
-
-/* CTA 按钮微渐变 + 发光边缘 */
-/*
-.btn-primary {
-  background: linear-gradient(180deg, #b5ff2e 0%, #9eff00 100%);
-  box-shadow:
-    0 0 0 1px rgba(158,255,0,0.4),
-    0 6px 20px rgba(158,255,0,0.15);
-}
-*/
-
-/* 极细 CRT 扫描线(全页,2% 透明) */
-/*
-body::after {
-  content: '';
-  position: fixed; inset: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    0deg, transparent 0, transparent 3px,
-    rgba(255,255,255,0.02) 3px, rgba(255,255,255,0.02) 4px
-  );
-  z-index: 999;
-}
-*/
-```
-
-**何时开启**:
-- Hero 区域需要"品牌张力"时,开 radial glow
-- 关键词需要强视觉锚点时(如产品 slogan 页),开 text-shadow
-- 主 CTA 需要视觉吸引力时,开按钮渐变
-- 活动页/发布页/品牌页,可全开
-- **常规内容页面**(文档、博客、README 展示) **不要开** —— 违反 PRINCIPLES 原则 3 (留白节奏) 和原则 4 (强调节制)
-
-> **重要**:渐变本身不是 AI 味儿。**跨色相渐变**(青 → 紫、蓝 → 粉)才是 AI 套路的元凶。Tech Dark 允许的渐变仅限:同色相深浅(Lime 亮 → Lime 暗)、背景到暗色(Lime 光斑 → 透明)。禁止第二种色相出现。
-
-### ❌ 禁止
-
-- 玻璃拟态(`backdrop-filter: blur`)—— 2019-2021 套路
-- 卡片阴影 `box-shadow: 0 4px 12px rgba(0,0,0,0.3)` —— Tech Dark 靠 hairline 不靠阴影
-- 呼吸灯(无限 animate pulse)—— 过度用力的"扮演科技"
-- `>` 终端提示符前缀 —— Hacker 扮演的陈词
-- 玻璃卡片 `rgba(255,255,255,0.02)` + 模糊 —— 不符合克制精神
-- 青紫跨色相渐变 —— AI 模板元凶
-- 多色 accent(页面同时出现两个 accent 色)
+> 注意:我们**不**禁止玻璃拟态、呼吸灯、青紫渐变、跨色相渐变、阴影等具体视觉手段。PRINCIPLES.md 已经从排版层把关 —— 只要结构有多样性、密度跳变、留白有节奏、强调节制、有作者痕迹、打破齐整,任何视觉手段都是**工具**而不是问题。
 
 ---
 
-## 7. 可访问性 & 打印
+## 7. 表现力开关(fx-rich)
+
+Tech Dark 提供一个**总开关**,用同一套排版/色彩/字体,给两种表现力:
+
+### 默认:克制版
+
+`<body>` 无 class。纯色 accent,无 glow,无渐变。适合:
+- 📄 文档页 / API 参考 / 变更日志 / README 展示
+- 📝 技术博客内容页
+- 🔬 规范类、严肃类内容
+
+### 开启 `fx-rich`:丰富版
+
+`<body class="fx-rich">`。自动生效的效果:
+- **Hero 背景 radial glow** —— accent 色极淡辐射光斑,不跨色相
+- **关键词荧光扩散** —— `h1 .k` / `h2 .k` 的 italic serif 加 text-shadow
+- **CTA 渐变 + 发光边缘** —— 主按钮从 accent 亮色到原色,hover 微微悬浮
+- **Hairline 带 accent 起点** —— 分割线开头 30% 有 accent 渐入
+- **极细 CRT 扫描线** —— 全页 2.5% 透明水平扫描线
+- **可选呼吸灯** —— `.kicker.pulse` 会在右侧加一个 accent 呼吸点
+
+### 何时用 `fx-rich`
+
+✓ 品牌主页、产品 landing、发布公告、活动邀请
+✓ Hero 需要"品牌张力"、希望访客停留的场景
+✓ 投资人 pitch 页、融资宣传
+
+✗ 文档页、博客内容、变更日志(读者目标是"读懂",不需要呼吸感)
+✗ 内容密集的长文(glow 会和密集文字互相干扰)
+
+**关键判断问题**:"这页访客进来,主要目的是阅读信息,还是被吸引?"
+阅读 → 默认。被吸引 → `fx-rich`。
+
+### 实现细节
+
+所有效果已经在 `template.html` 里写好,作用域限制在 `body.fx-rich` 下。
+切换只需要改一行 HTML:
+
+```html
+<body>                 <!-- 克制版 -->
+<body class="fx-rich"> <!-- 丰富版 -->
+```
+
+不用改 CSS,不用改内容,不用改结构。
+
+---
+
+## 8. 可访问性 & 打印
 
 ### `<head>` 必填
 
@@ -345,19 +333,27 @@ Tech Dark 的深色默认 **不打印** —— 页面检测到 print 环境时 *
 
 ---
 
-## 8. 和 PRINCIPLES.md 的协作
+## 9. 和 PRINCIPLES.md 的协作
 
 本文件**只讲风味**。生成一个 Tech Dark 页面的完整流程:
 
 1. **先按 PRINCIPLES.md** 规划结构(≥4 种区块 / 密度跳变 / 留白节奏 / 强调节制 / 作者痕迹 / 打破齐整)
 2. **再按本文件** 应用 Tech Dark 视觉选择(暖中性黑 / Inter + italic serif accent / hairline 列表式)
-3. **判断是否开 optional glow** —— 只在品牌页/发布页/活动页开,常规内容页不开
+3. **判断表现力档位** —— 读阅读类? 默认克制。吸引类? `<body class="fx-rich">`
+4. **颜色自由,排版严守** —— PRINCIPLES 6 条过了,颜色/渐变/光效都是工具
 
 **特别提醒 Tech Dark 对 PRINCIPLES 的翻译**:
 - 原则 1(结构多样性):Tech Dark 尤其要避免"3 列卡片",默认改成列表式 `.stack + .row`
-- 原则 4(强调节制):Tech Dark 的 accent 字族反差比颜色 accent 更应克制
+- 原则 4(强调节制):不是指不能用光效,而是指"全页重点不能太多"。一个 fx-rich 页面仍然可以只有 1-2 处 accent 聚焦
 - 原则 5(作者痕迹):Tech Dark 适合放 version 号、commit hash、build time 这些真实技术元素作为"作者痕迹"
 - 原则 6(打破齐整):Tech Dark 可以放一处手写注释、一段 ascii art、一个不对齐的版本号作为个性锚点
+
+**关于光效和 AI 味的澄清**:
+在 v2.1 之前本文件曾规定"禁止青紫渐变/禁止呼吸灯/禁止阴影",这是个**错误归因**。后来我们发现:
+- Stripe / Vercel / Linear 用渐变,气质高级
+- 很多扁平纯色站反而 AI 味更重(因为排版模板化)
+
+真正的 AI 味是排版语法问题,不是视觉手段问题。PRINCIPLES 6 条守住排版,Tech Dark 的视觉手段就可以放开。
 
 ---
 
