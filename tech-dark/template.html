@@ -81,7 +81,15 @@
     font-weight: 400;
     font-style: italic;
     color: var(--accent);
-    padding: 0 0.15em;  /* 斜体左右呼吸,避免中文/紧排字型挤在一起 */
+    padding: 0 0.15em;  /* 斜体左右呼吸 */
+  }
+  /* 中文关键词:用 .k-cn(不 italic,粗衬线) 避免伪斜体对齐问题 */
+  h1 .k-cn {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-style: normal;
+    color: var(--accent);
+    padding: 0 0.1em;
   }
 
   .hero-sub {
@@ -130,6 +138,13 @@
     font-style: italic;
     color: var(--accent);
     padding: 0 0.12em;
+  }
+  h2 .k-cn {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-style: normal;
+    color: var(--accent);
+    padding: 0 0.08em;
   }
 
   .lead {
@@ -378,13 +393,15 @@
     background-attachment: fixed;
   }
 
-  /* 关键词荧光扩散 */
-  body.fx-rich h1 .k {
+  /* 关键词荧光扩散(同时应用 .k 和 .k-cn) */
+  body.fx-rich h1 .k,
+  body.fx-rich h1 .k-cn {
     text-shadow:
       0 0 18px rgba(158,255,0,0.4),
       0 0 44px rgba(158,255,0,0.2);
   }
-  body.fx-rich h2 .k {
+  body.fx-rich h2 .k,
+  body.fx-rich h2 .k-cn {
     text-shadow: 0 0 14px rgba(158,255,0,0.3);
   }
 

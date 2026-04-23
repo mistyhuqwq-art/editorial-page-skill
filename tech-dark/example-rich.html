@@ -44,6 +44,7 @@
   .kicker::before { content: ''; width: 18px; height: 1px; background: var(--fg-sub); }
   h1 { font-family: var(--sans); font-size: clamp(44px, 5.5vw, 64px); font-weight: 500; line-height: 1.02; letter-spacing: -0.04em; color: var(--fg); margin-bottom: 28px; }
   h1 .k { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--accent); padding: 0 0.15em; }
+  h1 .k-cn { font-family: var(--serif); font-weight: 700; font-style: normal; color: var(--accent); padding: 0 0.1em; }
   .hero-sub { font-size: 17px; color: var(--fg-sub); margin-bottom: 56px; max-width: 560px; line-height: 1.55; }
   .hero-meta { display: flex; gap: 48px; font-family: var(--mono); font-size: 11px; color: var(--fg-muted); letter-spacing: 0.04em; text-transform: uppercase; padding-top: 28px; border-top: 1px solid var(--line); }
   .hero-meta div dt { color: var(--fg-dim); margin-bottom: 4px; }
@@ -55,6 +56,7 @@
   .tag { display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
   h2 { font-family: var(--sans); font-size: clamp(28px, 3.6vw, 36px); font-weight: 500; line-height: 1.1; letter-spacing: -0.025em; color: var(--fg); margin-bottom: 12px; }
   h2 .k { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--accent); padding: 0 0.12em; }
+  h2 .k-cn { font-family: var(--serif); font-weight: 700; font-style: normal; color: var(--accent); padding: 0 0.08em; }
   .lead { font-size: 15px; color: var(--fg-sub); margin-bottom: 40px; max-width: 580px; line-height: 1.55; }
 
   /* Stack + Row */
@@ -314,7 +316,7 @@
   <!-- ====== 数字墙: 具体证据 (PRINCIPLES 原则 5 作者痕迹) ====== -->
   <section>
     <div class="tag">IN THE WILD</div>
-    <h2>3 年,<span class="k">真实</span>生产数字</h2>
+    <h2>3 年,<span class="k-cn">真实</span>生产数字</h2>
     <p class="lead">不是 marketing claim,是社区自愿上报 + 我们内部使用的数据。</p>
 
     <div class="stats-row">
@@ -337,7 +339,7 @@
   <!-- ====== 代码块: 实际用法 ====== -->
   <section>
     <div class="tag">USAGE · 30 SECONDS</div>
-    <h2>看代码比听解释<span class="k">快</span></h2>
+    <h2>看代码比听解释<span class="k-cn">快</span></h2>
     <p class="lead">本节省略英文官方文档链接,只展示三条最常用命令。</p>
 
     <div class="code-block">
@@ -359,7 +361,7 @@
   <!-- ====== 收尾 CTA ====== -->
   <section class="ending">
     <div class="tag">GET STARTED</div>
-    <h2>一条命令,<span class="k">五分钟</span>跑通</h2>
+    <h2>一条命令,<span class="k-cn">五分钟</span>跑通</h2>
     <p class="lead">Mac / Linux 单二进制,不依赖 runtime。Windows 用 WSL 或 Docker。</p>
     <div class="cta-row">
       <a class="btn-primary" href="#">brew install flux</a>

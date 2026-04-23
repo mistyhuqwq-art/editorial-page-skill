@@ -118,6 +118,20 @@ h1 .k2 {
 }
 ```
 
+### ⚠️ 中文关键词用 `.k-cn` / `.k2-cn`
+
+中文没有真 italic 字形,浏览器做人工歪斜会导致视觉基线偏移、和前后字对不齐。
+
+- **英文 h1 第二关键词(italic 蓝色)** → `<span class="k2">ship</span>`(italic serif)
+- **中文 h1 第二关键词** → `<span class="k2-cn">一起来玩</span>`(粗衬线 normal,蓝色)
+
+- **英文 h2 关键词(italic 玫红色)** → `<span class="k">ideas</span>`(italic serif)
+- **中文 h2 关键词** → `<span class="k-cn">三件事</span>`(粗衬线 normal,玫红色)
+
+**保留的糖色块关键词**(h1 的 `<span class="k">`)不受影响 —— 它不依赖 italic,靠色块视觉即可,中英都能用。
+
+---
+
 **② 像素方块 bullet**
 
 章节小标签前用 CSS `box-shadow` 模拟的 + 形像素装饰(不用实际 pixel art):

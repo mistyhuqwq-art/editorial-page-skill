@@ -131,15 +131,28 @@ h1 .k {
 
 ### Italic 关键词的呼吸空间
 
-中文字型本身方正紧密,斜体叠加时和前后字会挤在一起(尤其和中文本字相邻)。解决办法是给斜体关键词加左右 padding:
+中文字型本身方正紧密,斜体叠加时和前后字会挤在一起。给斜体关键词加左右 padding:
 
 ```css
 h1 .k { padding: 0 0.15em; }
 h2 .k { padding: 0 0.12em; }
 ```
 
-0.12em 约等于 1 个 `-` 字符宽度的 60%,视觉上是"一点点缝",不会造成"硬塞了个空格"的感觉。
-英文 italic 字形本身带自然的右倾,所以 padding 值选择**不对称也能接受**(左比右略大一点也行,按字形微调)。
+### ⚠️ 中文关键词用 `.k-cn` 不用 `.k`
+
+中文没有真 italic 字形,浏览器做人工歪斜(transform 矩阵),导致**视觉基线偏移、和前后字对不齐**。
+所以:
+- **英文关键词** → 用 `<span class="k">ship</span>`(italic serif)
+- **中文关键词** → 用 `<span class="k-cn">真实</span>`(粗衬线 normal style,不 italic)
+
+```css
+h1 .k-cn { font-family: serif; font-weight: 700; font-style: normal; padding: 0 0.1em; }
+h2 .k-cn { font-family: serif; font-weight: 700; font-style: normal; padding: 0 0.08em; }
+```
+
+**核心判断**:写 `<span>` 前看里面是中文还是英文。中英混的短语(极少数),**整体走 `.k-cn`** 避免局部对不齐。
+
+**为什么选粗衬线而非其他方案**:保留了 sans 正文 vs serif 关键词的**字族反差**(tech-dark 的签名),只是不歪。和英文 italic 形成"英斜/中粗"的互补。
 
 ---
 
