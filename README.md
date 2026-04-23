@@ -83,8 +83,9 @@ cp warm-editorial/template.html my-page.html
 | [tech-dark](./tech-dark/) | 暖中性黑 + Lime + italic serif 字族反差 + hairline 列表式 | 开发者工具、API 平台、CLI 产品、技术文档、基础设施。支持 `fx-rich` 开关切换克制/丰富表现力 |
 | [minimal-mono](./minimal-mono/) | 纯黑白 + Inter + 等宽元信息 + 虚线分隔 + 粗细断崖(300 vs 900) | 技术博客、开源 README 展示、工程师个人站、论文式长文 |
 | [retro](./retro/) | 奶油底 + 糖果三色(奶粉/天空蓝/奶油黄) + chunky 边框硬阴影 + CRT 细扫描 + 现代骨架 | 活动邀请、创作者作品集、独立游戏站、有玩心的产品 |
+| [swiss-grid](./swiss-grid/) | 红黑二色 + Inter 900 uppercase + 12 栏精确对齐 + 1.25 modular scale | 出版/期刊、设计品牌、文化机构、严肃年报、排版研究 |
 
-*更多风格(Swiss Grid / Brutalist 等)可能会根据使用反馈陆续加入。*
+*Brutalist 可能根据使用反馈后续加入。*
 
 **在浏览器中对比选风味**:打开 [`preview-index.html`](./preview-index.html),5 个风味缩略图 + 对号入座的选择指南。
 

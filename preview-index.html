@@ -296,10 +296,58 @@
   }
   .thumb-retro .t-h .ital {
     color: #4f8ec7;
-    font-style: italic;
-    font-family: 'Source Serif 4', serif;
-    font-weight: 400;
-    padding: 0 0.15em;
+    font-weight: 700;
+    padding: 0 0.1em;
+  }
+
+  /* Swiss Grid 预览缩略图 */
+  .thumb-swiss {
+    background: #fff;
+    color: #000;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    flex-direction: column;
+    padding: 20px 24px;
+    gap: 8px;
+    border-bottom: none !important;
+  }
+  .thumb-swiss .t-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #666;
+    letter-spacing: 0.08em;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    width: 100%;
+  }
+  .thumb-swiss .t-h {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px; font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #000;
+    margin-top: 8px;
+  }
+  .thumb-swiss .t-h i {
+    color: #ff1f1f;
+    font-style: normal;
+  }
+  .thumb-swiss .t-foot {
+    margin-top: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: #666;
+    letter-spacing: 0.06em;
+    padding-top: 6px;
+    border-top: 2px solid #000;
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   /* Guide section */
@@ -358,8 +406,8 @@
   <h1>Pick a <i>flavor</i>,<br>see it first.</h1>
   <p class="sub">选择风味之前,先在浏览器里看一眼真实效果。点击任意一张卡片打开完整 example 页,看完再回到 Claude Code 告诉它你要哪个。</p>
 
-  <div class="tag">FLAVORS · 5 options</div>
-  <h2>五种可选</h2>
+  <div class="tag">FLAVORS · 6 options</div>
+  <h2>六种可选</h2>
 
   <div class="grid">
 
@@ -440,6 +488,21 @@
       </div>
     </a>
 
+    <!-- Swiss Grid -->
+    <a class="card" href="./swiss-grid/example.html">
+      <div class="thumb thumb-swiss">
+        <div class="t-num">§ 001 · APR 2026 · VOL. 3</div>
+        <div class="t-h">GRID IS<br>A <i>WAY</i> OF<br>THINKING.</div>
+        <div class="t-foot"><span>QUARTERLY</span><span>12-COL</span></div>
+      </div>
+      <div class="body">
+        <div class="name">SWISS-GRID</div>
+        <h3>瑞士学派 · 12 栏红黑</h3>
+        <p>Inter 900 uppercase + 12 栏精确对齐 + 红黑二色 + 1.25 modular scale。秩序至上,出版物气质。</p>
+        <div class="meta"><b>适合</b> · 设计品牌 / 出版/期刊 / 文化机构 / 严肃年报 / 排版研究</div>
+      </div>
+    </a>
+
   </div>
 
   <!-- Guide -->
@@ -450,6 +513,7 @@
     <p><b>品牌主页 / 产品 landing / 发布公告</b> → <code>tech-dark fx-rich</code>(科技呼吸感)</p>
     <p><b>技术博客 / 开源 README / 工程师个人站</b> → <code>minimal-mono</code>(纯黑白文本)</p>
     <p><b>活动邀请 / 作品集 / 独立游戏站 / 有玩心的产品</b> → <code>retro</code>(糖果 chunky)</p>
+    <p><b>出版/期刊 / 设计品牌 / 文化机构 / 严肃年报 / 排版研究</b> → <code>swiss-grid</code>(红黑 12 栏)</p>
     <p style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--text-dim);">如果你的场景跨多个分类,选"最想让访客第一眼被感染到的情绪"对应的风味。</p>
   </div>
 
