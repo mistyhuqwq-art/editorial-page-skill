@@ -1,7 +1,13 @@
 # Editorial Page Skill · Design System Collection
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-see_all_6_flavors-1a1a1a?style=for-the-badge&labelColor=000000)](https://mistyhuqwq-art.github.io/editorial-page-skill/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-c0542e?style=for-the-badge)](./LICENSE)
+[![6 flavors](https://img.shields.io/badge/flavors-6-c0542e?style=for-the-badge)](https://mistyhuqwq-art.github.io/editorial-page-skill/)
+
 > AI 可读的设计系统合集 —— 一层通用排版原则 + 多种视觉风味。
 > 给任何 AI 工具(Claude Code / Cursor / v0 / Copilot / Lovable)生成视觉一致的单页 HTML。
+
+**🎨 [在浏览器里看 6 种风味对比 →](https://mistyhuqwq-art.github.io/editorial-page-skill/)**
 
 ---
 
