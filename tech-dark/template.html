@@ -215,6 +215,51 @@
   .code-block .cmt { color: var(--fg-dim); }
   .code-block .kw  { color: var(--accent); }
 
+  /* ---- Terminal (模拟终端窗口) ---- */
+  .terminal {
+    background: var(--bg-code);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+  .terminal-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #1a1817;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--fg-dim);
+    letter-spacing: 0.05em;
+  }
+  .terminal-head .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #3a3836;
+  }
+  .terminal-head .title {
+    margin-left: 12px;
+    text-transform: uppercase;
+  }
+  .terminal-body {
+    padding: 18px 22px;
+    color: #c8c8c0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  .terminal-body .prompt { color: var(--accent); }
+  .terminal-body .cmt    { color: var(--fg-dim); }
+  .terminal-body .user   { color: #ffb454; }
+  .terminal-body .ok     { color: var(--accent); font-weight: 500; }
+  .terminal-body .warn   { color: #ffb454; }
+  .terminal-body .muted  { color: var(--fg-muted); }
+  .terminal-body .highlight { color: var(--fg); font-weight: 500; }
+
   /* ---- CTA ---- */
   .cta-row {
     display: flex; gap: 14px;
@@ -305,6 +350,7 @@
     .row .tag-end { display: none; }
     .hero-meta { flex-direction: column; gap: 20px; }
     .stats-row { gap: 32px; }
+    .terminal-body { padding: 14px 16px; font-size: 11.5px; }
   }
 
   /* ---- Keyboard focus (a11y) ---- */
@@ -350,10 +396,16 @@
     .chip {
       background: #f5f0ff !important; color: #4a1a6e !important;
     }
-    .code-block {
+    .code-block, .terminal {
       background: #f5f5f5 !important; color: #1a1a1a !important;
       border-color: #ddd !important;
     }
+    .terminal-head {
+      background: #eee !important; border-color: #ddd !important;
+    }
+    .terminal-body .prompt, .terminal-body .ok { color: #2d6b22 !important; }
+    .terminal-body .warn, .terminal-body .user { color: #8b5c00 !important; }
+    .terminal-body .muted { color: #666 !important; }
     a[href^="http"]::after {
       content: " (" attr(href) ")";
       font-size: 0.85em; color: #666;
@@ -586,6 +638,31 @@
 
 <span class="cmt">{{CODE_COMMENT_2}}</span>
 <span class="kw">{{CODE_KEYWORD_2}}</span> {{CODE_CONTENT_2}}
+    </div>
+  </section>
+
+
+  <!-- ====== 终端模拟章节 (命令行交互展示,Tech Dark 特色) ====== -->
+  <section>
+    <div class="tag">{{SECTION_TAG_5}}</div>
+    <h2>{{H2_PREFIX_5}}<span class="k">{{H2_ACCENT_5}}</span>{{H2_SUFFIX_5}}</h2>
+    <p class="lead">{{LEAD_5}}</p>
+
+    <div class="terminal">
+      <div class="terminal-head">
+        <span class="dot" style="background:#ff5f56"></span>
+        <span class="dot" style="background:#ffbd2e"></span>
+        <span class="dot" style="background:#27c93f"></span>
+        <span class="title">{{TERMINAL_TITLE}}</span>
+      </div>
+      <div class="terminal-body"><span class="cmt">{{TERMINAL_COMMENT}}</span>
+
+<span class="prompt">></span> <span class="user">{{TERMINAL_INPUT}}</span>
+
+<span class="ok">  {{TERMINAL_OUTPUT_1}}</span>
+  <span class="muted">{{TERMINAL_OUTPUT_2}}</span>
+
+  <span class="highlight">{{TERMINAL_OUTPUT_3}}</span></div>
     </div>
   </section>
 

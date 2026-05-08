@@ -203,6 +203,7 @@ hairline 上下:    40-48px 留白
 | `.stack` + `.row` | **列表式排版** ⭐ | 替代 3 列卡片网格。每行 `[编号][标题+描述][右侧小标签]` |
 | `.grid` | 2-3 列布局 | 必要时用,不要默认用 |
 | `.code-block` | 深色代码块 | 背景 `#0f0e0c`(比主背景更深) |
+| `.terminal` | **模拟终端窗口** ⭐ | macOS 三色圆点 + 标题栏 + 带语法着色的命令行交互 |
 | `.cta-row` | CTA 按钮组 | 主按钮 accent 实色,次按钮 ghost |
 | `.chip` | 版本/状态标签 | Mono + accent-dim 背景 |
 
@@ -225,6 +226,64 @@ hairline 上下:    40-48px 留白
 ```
 
 **为什么**:列表比卡片更"文本化",更符合 Tech Dark 的克制气质;也和 PRINCIPLES 原则 1(结构多样性)呼应——避免 AI 模板化的卡片网格。
+
+### 模拟终端窗口(`.terminal`)
+
+Tech Dark 的**高表现力叙事组件**。用来展示命令行交互、Agent 对话、系统输出等场景。比 `.code-block` 更有沉浸感——带 macOS 窗口装饰 + 多层语法着色。
+
+```html
+<div class="terminal">
+  <div class="terminal-head">
+    <span class="dot" style="background:#ff5f56"></span>
+    <span class="dot" style="background:#ffbd2e"></span>
+    <span class="dot" style="background:#27c93f"></span>
+    <span class="title">terminal title</span>
+  </div>
+  <div class="terminal-body"><span class="cmt"># 注释行</span>
+
+<span class="prompt">></span> <span class="user">用户输入</span>
+
+<span class="ok">  成功输出</span>
+  <span class="muted">次要信息</span>
+  <span class="warn">  警告信息</span>
+
+  <span class="highlight">→ 关键结论</span></div>
+</div>
+```
+
+**语法着色 class**:
+
+| Class | 颜色 | 用途 |
+|---|---|---|
+| `.prompt` | accent(`#9eff00`) | 命令行提示符 `>` / `$` |
+| `.user` | 暖黄(`#ffb454`) | 用户输入的命令或对话 |
+| `.ok` | accent + bold | 成功/通过 |
+| `.warn` | 暖黄(`#ffb454`) | 警告/拒绝 |
+| `.cmt` | `--fg-dim` | 注释行 |
+| `.muted` | `--fg-muted` | 次要信息 |
+| `.highlight` | `--fg` + bold | 关键输出/结论 |
+
+**使用场景**:
+- CLI 工具的安装/使用演示
+- Agent 门禁拦截("被 reject 的那一刻")
+- 构建/部署过程的关键输出
+- Before/After 对比中的"真实瞬间"
+
+**与 `.code-block` 的区别**:
+- `.code-block`:展示**静态代码片段**(配置、规则、数据结构)。无窗口装饰,纯内容
+- `.terminal`:展示**动态交互过程**(输入 → 响应 → 结果)。有窗口装饰,有角色区分(prompt/user/system)
+
+**注意**:`.terminal-body` 内部使用 `white-space: pre-wrap`,所以 HTML 的缩进即是视觉缩进。内容**直接写在标签内**(不用额外 `<pre>`),注意第一行紧贴 `>` 标签避免多余空行。
+
+**可选:嵌入视频**:终端框也可以包裹 `<video>` 替代文本内容(如录屏演示):
+
+```html
+<div class="terminal">
+  <div class="terminal-head">...</div>
+  <video src="demo.mp4" autoplay muted loop playsinline controls
+    style="width:100%; display:block; background:var(--bg-code);"></video>
+</div>
+```
 
 ---
 
